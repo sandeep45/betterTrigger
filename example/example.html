@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>betterTrigger Example</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="../jquery.betterTrigger.min.js"></script>
+  <script>
+    $(function(){
+
+      $(document).on("bla", function(){
+        alert("in $'s handler for event: BLA");
+      });
+      window.document.addEventListener("bla", function(){
+        alert("in native js handler for event: BLA");
+      });
+
+
+      $("#oldButton").click(function(){
+        $(document).trigger("bla");
+      });
+
+      $("#newButton").click(function(){
+        $(document).betterTrigger("bla");
+      });
+
+    });
+  </script>
+</head>
+<body>
+
+  <h1>jquery.betterTrigger.js</h1>
+
+  <h4>We have added these two handlers:</h4>
+  <pre>
+    $(function(){
+
+      $(document).on("bla", function(){
+        alert("in fk$'s handler for event: bla");
+      });
+      window.document.addEventListener("bla", function(){
+        alert("in native js handler for event: bla");
+      });
+    });
+  </pre>
+
+  <h4>Lets fire event via plain old regular <code>trigger</code></h4>
+  <input type="button" id="oldButton" value="Fire Event Via trigger" />
+
+  <h4>Lets fire event via the awesome <code>betterTrigger</code></h4>
+  <input type="button" id="newButton" value="Fire Event Via betterTrigger" />
+
+</body>
+</html>
